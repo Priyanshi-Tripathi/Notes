@@ -1,0 +1,375 @@
+1. Instance variable and static variables have default value.. Local variables have to be initialized.
+
+2. Ways to create object 
+	i)  new keyword
+	ii) newInstance() method
+	iii) clone() method
+	iv) factory method 
+	etc
+
+3. There exists anonymous objects.. Eg
+	class Calculation{  
+  
+		 void fact(int  n){  
+ 			 int fact=1;  
+ 			 for(int i=1;i<=n;i++){  
+ 			  fact=fact*i;  
+ 		 }  
+	 System.out.println("factorial is "+fact);  
+	}  
+  
+	public static void main(String args[]){  
+		 new Calculation().fact(5); //calling method with annonymous object  
+	}  
+} 
+
+Best to use when object used only once
+
+4. Method overloading cannot be done by changing return type of method as there might occur ambiguity.. Eg
+	class Calculation{  
+ 		int sum(int a,int b){System.out.println(a+b);}  
+  		double sum(int a,int b){System.out.println(a+b);}  
+  
+		public static void main(String args[]){  
+ 		Calculation obj=new Calculation();  
+  		int result=obj.sum(20,20); //Compile Time Error  
+  
+ 	 }  
+} 
+
+5. If there are no matching type arguments in the method, and each method promotes similar number of arguments, there will be ambiguity.. Eg
+	class OverloadingCalculation{  
+ 		void sum(int a,long b){System.out.println("a method invoked");}  
+  		void sum(long a,int b){System.out.println("b method invoked");}  
+  
+  		public static void main(String args[]){  
+  		OverloadingCalculation obj=new OverloadingCalculation();  
+  		obj.sum(20,20); //now ambiguity  
+  }  
+} 
+
+6. No copy ctor in java unlike C++
+
+7. Ctor returns current class instance implicitly (Can't have an explicit return type)
+
+8. Static methods can only access static data members and change their value and they can't call non-static methods directly.
+
+9. this and super can't be used in static content.
+
+10. Static block is executed before main method.
+
+11. Until JDK 1.7 we could execute a program without main() method.
+
+12. this keyword is a ref variable referring to current object.
+
+13. Usage of this 
+	i) to refer current class instance variable.
+	ii) to invoke current class constructor.
+	iii) to invoke current class method (implicitly)
+	iv) can be passed as an argument in the method call. [ Use : In event handling (or) in a situation where we have to 							provide reference of a class to another one ]
+	v) can be passed as argument in the constructor call.
+	vi) to return the current class instance.
+
+14. Static method cannot be overriden because it is bound with class whereas instance method is bound with object. Static belongs to class area and instance belongs to heap area.
+
+15. When overriding a method
+	i) in sub class the overridden method should have same or more liberal access modifier ie a protected method in 	    	     parent class can't be overriden to be a default method in sub class. [ Default is more restrictive than protected ]
+	ii) if method being overridden has exception.. The subclass can have 
+		a) same exception
+		b) an exception hierarchically lower to the one overridden method throws
+		c) no exception
+	ii) if method being overridden has no exception.. The sub class can throw only unchecked exceptions.
+
+16. The return type of the get() method of A class is A but the return type of the get() method of B class is B. Both methods have different return type but it is method overriding since class B extends class A and get() method has a non-primitive return type. This is known as covariant return type. {Since Java5}
+
+17. super keyword is a ref variable that is used to refer immediate parent class object.
+
+18. Usage of super
+	i) to refer immediate parent class instance variable.
+	ii) to invoke immediate parent class constructor.
+	iii) to invoke immediate parent class method.
+
+19. Can directly call parent class method in case sub class does not have a method with same name ie no need to use super.
+
+20. Can use instance initializer block to perform some operations while assigning value to instance data member like a for loop to fill a complex array or error handling etc.
+
+21. Instance intializer block is invoked at the time of object creation. The java compiler copies the instance initializer block in the constructor after the first statement super(). So firstly, constructor is invoked.
+
+22. A final variable that has no value is called blank/uninitialized final variable. It can be initialized in the ctor only. The blank final variable can be static also which will be initialized in the static block only.
+
+23. Final method is inherited but you cannot override it.
+
+24. Ctor can't be declared final because it is never inherited.
+
+25. Since method invocation is determined by the JVM not compiler, it is known as runtime polymorphism.
+
+26. If there is any private, final or static method in a class, there is static binding.
+
+27. instanceof operator is used to test whether the object is an instance of the specified type (class or subclass or interface).
+
+28. Interface fields are public, static and final by default, and methods are public and abstract.
+
+29. Multiple inheritance is supported using interface because there is no ambiguity as implementation is provided by the implementation class.
+
+30. An interface that have no member is known as marker or tagged interface. For example: Serializable, Cloneable, Remote etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.
+
+31. The nested interfaces are used to group related interfaces so that they can be easy to maintain.
+
+32. The nested interface must be referred by the outer interface or class. It can't be accessed directly.
+
+33. Nested interface must be public if it is declared inside the interface but it can have any access modifier if declared within the class.
+
+34. Nested interfaces are declared static implicitely.
+
+35. To access nested interface you have to use outerInterface/outerClass.innerInterface like in collection framework, Sun Microsystem has provided a nested interface Entry. Entry is the subinterface of Map i.e. accessed by Map.Entry.
+
+36. If we define a class inside the interface, java compiler creates a static nested class.
+
+37. If you import a package, all the classes and interface of that package will be imported excluding the classes and interfaces of the subpackages. Hence, you need to import the subpackage as well.
+
+38. The package class provides methods to get information about the specification and implementation of a package. It provides methods such as getName(), getImplementationTitle(), getImplementationVendor(), getImplementationVersion() etc.
+
+39. The import allows the java programmer to access classes of a package without package qualification whereas the static import feature allows to access the static members of a class without the class qualification. The import provides accessibility to classes and interface whereas static import provides accessibility to static members of the class. {Since Java5}
+
+40. There are two types of modifiers in java: access modifiers and non-access modifiers.
+
+41. The access modifiers in java specifies accessibility (scope) of a data member, method, constructor or class.There are 4 types of java access modifiers 
+	i) private
+	ii) default
+	iii) protected
+	iv) public
+
+42. There are many non-access modifiers such as static, abstract, synchronized, native, volatile, transient etc.
+
+
+43. A class cannot be private or protected except nested class.
+
+44. Access Modifier	within class	within package	outside package by subclass only	outside package
+	Private	    Y			N		N				N
+	Default	    Y			Y		N				N
+	Protected	    Y			Y		Y				N
+	Public	    Y			Y		Y				Y
+
+45. Object class has 11 methods. They are
+	i) public final Class getClass():
+		returns the Class class object of this object. The Class class can further be used to 	get the metadata of 				this class.
+	ii) public int hashCode():
+		returns the hashcode number for this object.
+	iii) public boolean equals(Object obj):
+		compares the given object to this object.
+	iv) protected Object clone() throws CloneNotSupportedException:
+		creates and returns the exact copy (clone) of this object.
+	v) public String toString():
+		returns the string representation of this object.
+	vi) public final void notify():
+		wakes up single thread, waiting on this object's monitor.
+	vii) public final void notifyAll():
+		wakes up all the threads, waiting on this object's monitor.
+	viii) public final void wait(long timeout)throws InterruptedException:
+		causes the current thread to wait for the specified milliseconds, until another thread notifies (invokes 				notify() or notifyAll() method).
+	ix) public final void wait(long timeout,int nanos)throws InterruptedException:
+		causes the current thread to wait for the specified miliseconds and nanoseconds, until another thread 				notifies (invokes notify() or notifyAll() method).
+	x) public final void wait()throws InterruptedException:
+		causes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).
+	xi) protected void finalize()throws Throwable:
+		is invoked by the garbage collector before object is being garbage collected.
+
+46. java.lang.Cloneable interface must be implemented by the class whose object clone we want to create else gives CloneNotSupportedException exception.
+
+47. The clone() method saves the extra processing task for creating the exact copy of an object  [ By default shallow copy ]. If we perform it by using the new keyword, it will take a lot of processing to be performed that is why we use object cloning.
+
+48. For array object, an proxy class is created whose name can be obtained by getClass().getName() method on the object.
+
+49. We can copy an array to another by the arraycopy method of System class.. Syntax..
+	public static void arraycopy(  
+		Object src, int srcPos,Object dest, int destPos, int length  
+	)  
+
+ Eg
+	class TestArrayCopyDemo {  
+    	public static void main(String[] args) {  
+        	char[] copyFrom = { 'd', 'e', 'c', 'a', 'f', 'f', 'e',  
+               			 'i', 'n', 'a', 't', 'e', 'd' };  
+        	char[] copyTo = new char[7];  
+  
+        	System.arraycopy(copyFrom, 2, copyTo, 0, 7);  
+        	System.out.println(new String(copyTo));  // prints caffein
+    }  
+}  
+
+50. Wrapper class in java provides the mechanism to convert primitive into object and object into primitive.
+Since J2SE 5.0, autoboxing and unboxing feature converts primitive into object (autoboxing ) and object into primitive (unboxing) automatically.One of the eight classes of java.lang package are known as wrapper class in java.
+
+51. First preference is given to auto-widening ie int to long etc, and then to auto-boxing ie int to Integer.. If both not possible then compiler error.
+
+52. There is only call by value in java, not call by reference.
+
+53. Java strictfp keyword ensures that you will get the same result on every platform if you perform operations in the floating-point variable.
+
+54. The strictfp keyword can be applied on methods, classes and interfaces.
+
+55. First cmd line arg is actual arg.
+
+56. java.lang.String class implements Serializable, Comparable and CharSequence interfaces.
+
+57. String class has 26 methods.
+
+58. String is immutable because if one reference variable changes the value of the object, it will be affected to all the reference variables. 
+
+59. equals() checks content equality and == checks ref equality.
+
+60. After a string literal, all the + will be treated as string concatenation operator.
+
+61. In case of string.. startIndex: inclusive and endIndex: exclusive
+
+62. trim() method eliminates white spaces before and after string.
+
+63. Strings computed by concatenation at run-time are newly created and therefore distinct.
+
+64. The result of explicitly interning a computed string is the same string as any pre-existing literal string with the same contents this is because when the intern method is invoked, if the pool already contains a string equal to this String object as determined by the equals(Object) method, then the string from the pool is returned. Otherwise, this String object is added to the pool and a reference to this String object is returned.
+
+65. StringBuffer class is thread-safe.
+
+66. Initial capacity of StringBuffer is 16.. It can however be changed by passing required capacity as param in its ctor.
+
+67. In StringBuffer capacity is increased by (oldcapacity*2)+2.. Eg
+	If current capacity is 16, it will be (16*2)+2=34.
+
+68. ensureCapacity() method of StringBuffer class ensures that the given capacity is the minimum to the current capacity.. Eg
+	If current capacity is 16 and we use sb.ensureCapacity(10) // sb.capacity() = 10 ie No change
+	However if we use sb.ensureCapacity(20) // sb.capacity() = 34 since (16*2)+2 = 34
+
+69.   StringBuilder class is thread unsafe and is introduced since JDK 1.5
+
+70. Initial capacity of StringBuilder is 16.. It can however be changed by passing required capacity as param in its ctor.
+
+71. StringBuffer class doesn't override the equals() method of Object class.
+
+72. java.util.StringTokenizer class allows you to break a string into tokens. [ Deprecated now ]
+
+73. getBytes() method returns the byte array of the string.
+
+74. java.util.regex package provides following:
+	i) MatchResult interface
+	ii) Matcher class
+	iii) Pattern class
+	iv) PatternSyntaxException class
+
+75. 	? = 0 or 1 time
+	* = 0 or more times
+	+ = 1 or more times
+	X{n} = X occurs n times only
+	X{n,} = X occurs n or more times
+	X{y,z} = X occurs at least y times but less than z times
+
+76. Throwable is parent class of
+	i) Exception
+		a) IOException
+		b) SQLException
+		c) RuntimeException
+		etc.
+	ii) Error
+		a)VirtualMachineError
+		b) AssertionError
+		etc.
+
+77. RunTimeException
+	i) ArithmeticException
+	ii) NulPointerException
+	iii) NumberFormatException
+	etc.
+
+78. There are mainly two types of exceptions: checked and unchecked where error is considered as unchecked exception.
+
+79. Checked Exception
+	The classes that extend Throwable class except RuntimeException and Error are known as checked exceptions 		e.g.IOException, SQLException etc. Checked exceptions are checked at compile-time.
+
+80. Unchecked Exception
+	The classes that extend RuntimeException are known as unchecked exceptions e.g. ArithmeticException, 		NullPointerException, ArrayIndexOutOfBoundsException etc. Unchecked exceptions are not checked at 		compile-time rather they are checked at runtime.
+
+81. Error
+	Error is irrecoverable e.g. OutOfMemoryError, VirtualMachineError, AssertionError etc.
+
+82. The finally block will not be executed if program exits(either by calling System.exit() or by causing a fatal error that causes the process to abort).
+
+83. We can throw either checked or uncheked exception in java by throw keyword.
+
+84. By default, Checked Exceptions are not forwarded in calling chain (propagated) unlike Unchecked Exceptions.
+
+85. Thread is basically a lightweight sub-process, a smallest unit of processing.
+
+86. Multithreading is preffered over multiprocessing because threads share a common memory area. They don't allocate separate memory area so saves memory, and context-switching between the threads takes less time than process.
+
+87. Runnable interface has only one method run().
+
+88. The thread scheduler mainly uses preemptive or time slicing scheduling to schedule the threads.
+
+89.  Thread cannot be started again. If you does so, an IllegalThreadStateException is thrown.
+
+90. If we invoke run() method from main thread, the run() method goes onto the current call stack rather than at the beginning of a new call stack.
+
+91. Daemon thread in java is a service provider thread that provides services to the user thread.. Eg
+	 gc, finalizer etc.
+
+92. If you want to make a user thread as Daemon, it must not be started otherwise it will throw IllegalThreadStateException ie set thread to daemon before starting it.
+
+93. ExecutorService executor = Executors.newFixedThreadPool(5);//creating a pool of 5 threads  
+	executor.execute(worker);//calling execute method of ExecutorService  
+
+
+94. Java provides a convenient way to group multiple threads in a single object. In such way, we can suspend, resume or interrupt group of threads by a single method call.
+
+95. Java thread group is implemented by java.lang.ThreadGroup class.
+	ThreadGroup tg1 = new ThreadGroup("Group A");   
+	Thread t1 = new Thread(tg1,new MyRunnable(),"one");     
+	Thread.currentThread().getThreadGroup().interrupt();  // all threads in tg1 will be interrupted
+
+96. To execute some code before JVM shuts down, we use shutdown hook.
+
+97. addShutdownHook() method of Runtime class is used to register the thread with the Virtual Machine.. Syntax:
+	public void addShutdownHook(Thread hook){}  
+Eg:
+	Runtime r=Runtime.getRuntime();  
+	r.addShutdownHook(new MyThread());  
+
+98. The shutdown sequence can be stopped by invoking the halt(int) method of Runtime class.
+
+99. Ways to unrefer object
+	i) By nulling the reference
+	ii) By assigning a reference to another
+	iii) By annonymous object etc.
+
+100. The Garbage collector of JVM collects only those objects that are created by new keyword.
+
+101. Types of synchronization
+	i) Process Synchronization
+	ii) Thread Synchronization
+
+102. Types of thread synchronization
+	i) Mutual Exclusive
+		a) Synchronized method.
+		b) Synchronized block.
+		c) static synchronization.
+	ii) Cooperation (Inter-thread communication in java)
+
+103. Since Java 5 the package java.util.concurrent.locks contains several lock implementations.
+
+104. If you make any static method as synchronized, the lock will be on the class not on object.
+
+105. Inter thread comm can be acheived by
+	i) wait()
+	ii) notify()
+	iii) notifyAll()
+
+106. If the thread is not in the sleeping or waiting state, calling the interrupt() method performs normal behaviour and doesn't interrupt the thread but sets the interrupt flag to true.
+
+107. Java monitors are reentrant means java thread can reuse the same monitor for different synchronized methods if method is called from the method.
+
+108. The String class and all the wrapper classes implements java.io.Serializable interface by default.
+
+109. If parent class is Serializable, subclass would also be and if a class has a reference of another class, all the references must be Serializable otherwise serialization process will not be performed. In such case, NotSerializableException is thrown at runtime.
+
+
+
+NOTE:
+IO and networking to be read.

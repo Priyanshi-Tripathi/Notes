@@ -1,0 +1,9 @@
+package com.trial.configuration;
+
+@Configuration
+@EnableTransactionManagement
+@ComponentScan({ "com.trial.configuration" })
+@PropertySource(value = { "classpath:application.properties" })
+public class HibernateConfiguration {
+
+}

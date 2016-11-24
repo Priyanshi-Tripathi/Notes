@@ -1,0 +1,5 @@
+package com.trial.converter;
+
+public class RoleToUserProfileConverter {
+
+}

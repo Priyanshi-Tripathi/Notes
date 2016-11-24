@@ -1,0 +1,10 @@
+package com.trial.util;
+
+public class QuickPasswordEncodingGenerator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

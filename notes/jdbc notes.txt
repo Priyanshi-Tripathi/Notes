@@ -1,0 +1,102 @@
+1.  Types of JDBC drivers:
+	i) JDBC-ODBC bridge driver
+	ii) Native-API driver (partially java driver)
+	iii) Network Protocol driver (fully java driver)
+	iv) Thin driver (fully java driver)
+
+2. Class.forName() method is used to dynamically load the driver class.
+
+3. But we can make ResultSet object to move 
+	forward  = TYPE_SCROLL_INSENSITIVE
+	backward = TYPE_SCROLL_SENSITIVE 
+	in createStatement(int,int) method
+
+We can make it updatable by:
+	Statement stmt=con.createStatement						(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);  
+
+4. ResultSetMetaData rsmd=rs.getMetaData();  
+
+5. DatabaseMetaData dbmd=con.getMetaData();  
+
+6. To insert img in db
+	FileInputStream fin=new FileInputStream("d:\\g.jpg");  
+	ps.setBinaryStream(2,fin,fin.available()); 
+
+7. To retrieve img from db
+	Blob b=rs.getBlob(2);//2 means 2nd column data  
+	byte barr[]=b.getBytes(1,(int)b.length());//1 means first image             
+	FileOutputStream fout=new FileOutputStream("d:\\sonoo.jpg");  
+	fout.write(barr);
+
+8. To store file in db
+	File f=new File("d:\\myfile.txt");  
+	FileReader fr=new FileReader(f);                
+	ps.setInt(1,101);  
+	ps.setCharacterStream(2,fr,(int)f.length());
+
+9. To retrieve file from db
+	Clob c=rs.getClob(2);  
+	Reader r=c.getCharacterStream();                           
+	FileWriter fw=new FileWriter("d:\\retrivefile.txt");                
+	int i;  
+	while((i=r.read())!=-1)  
+	fw.write((char)i);  
+
+10. Procedure cannot be called from function but can call func from proc.
+
+11. void setAutoCommit(boolean status) is true by default means each transaction is committed bydefault.
+
+12. java.sql.Statement and java.sql.PreparedStatement interfaces provide methods for batch processing.
+
+13. The instance of RowSet is the java bean component because it has properties and java bean notification mechanism { since JDK 5} . It is the wrapper of ResultSet. It holds tabular data like ResultSet but it is easy and flexible to use.
+
+14.  Implementation classes of RowSet interface :
+	i) JdbcRowSet
+	ii) CachedRowSet
+	iii) WebRowSet
+	iv) JoinRowSet
+	v) FilteredRowSet
+
+15. JDBC API 3.0 features  :
+	i) Jdbc RowSet
+	ii) Savepoint in transaction management Now you are able to create, rollback and release the savepoint by 		Connection.setSavepoint(), 
+		Connection.rollback(Savepoint svpt) and
+		Connection.releaseSavepoint(Savepoint svpt) methods.
+	iii) Statement and ResultSet Caching for Connection Pooling ie you are able to reuse the statement and result set 		because jdbc 3 provides you the facility of statement caching and result set caching.
+	iv) Switching between Global and Local Transactions
+	v) Retrieval of auto generated keys ie you are able to get the auto generated keys by the method 		getGeneratedKeys().
+
+16. JDBC API 4.0 features :
+	i) Automatic Loading of Driver class ie no need to write Class.forName() now because it is loaded by default.
+	ii) Subclasses of SQLException Jdbc 4 provides new subclasses of SQLException class for better readability and 				handling.
+	iii) New methods
+	iv) Improved DataSource implementation.
+	v) Event Handling support in Statement for Connection Pooling ie Connection Pooling can listen statement 				error and statement closing events.
+
+
+NOTE:
+Driver class: 
+	oracle = oracle.jdbc.driver.OracleDriver
+	sql = com.mysql.jdbc.Driver
+
+Connection URL:
+	oracle10G =  jdbc:oracle:thin:@localhost:1521:xe
+	where,
+		 jdbc is the API
+		oracle is the database
+		thin is the driver
+		localhost is the server name on which oracle is running ( we may also use IP address)
+		1521 is the port number
+		XE is the Oracle service name.
+
+	sql = jdbc:mysql://localhost:3306/sonoo
+	where,
+		jdbc is the API
+		mysql is the database
+		localhost is the server name on which mysql is running (we may also use IP address)
+		3306 is the port number
+		sonoo is the database name
+
+ You may get all these informations from the tnsnames.ora file.
+
+New features of java and internationalization to be read.

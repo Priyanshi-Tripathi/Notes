@@ -1,0 +1,7 @@
+http://www.itsmwatch.com/itil/article.php/3680776/Release-Management-Where-to-Start.htm
+
+http://wiki.servicenow.com/index.php?title=ITIL_Release_Management#gsc.tab=0
+
+Main project:
+http://websystique.com/springmvc/spring-mvc-4-angularjs-example/
+http://websystique.com/springmvc/spring-4-mvc-and-hibernate4-integration-example-using-annotations/

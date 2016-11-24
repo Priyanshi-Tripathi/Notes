@@ -1,0 +1,242 @@
+1. Servlet is at server side
+
+2. CGI (Common Gateway Interface) technology enables the web server to call an external program and pass HTTP request information to the external program to process the request
+
+3.  Disadvantages of CGI technology:
+	i) If number of clients increases, it takes more time for sending response.
+	ii) For each request, it starts a process and Web server is limited to start processes.
+	iii) It uses platform dependent language e.g. C, C++, perl.
+
+4. Advantages of servlets
+	i) Better performance because it creates a thread for each request not process.
+	ii) Portability as it uses java language.
+	iii) Robust: Servlets are managed by JVM so we don't need to worry about memory leak, garbage collection etc.
+	iv) Secure as it uses java language.
+
+5. Http uses reliable TCP connections by default on TCP port 80.
+
+6. 	HTTP Request	Description
+	GET		Asks to get the resource at the requested URL.
+	POST		Asks the server to accept the body info attached. It is like GET request with extra info sent 			with the request.
+	HEAD		Asks for only the header part of whatever a GET would return. Just like GET but with no 			body.
+	TRACE		Asks for the loopback of the request message, for testing or troubleshooting.
+	PUT		Says to put the enclosed info (the body) at the requested URL.
+	DELETE		Says to delete the resource at the requested URL.
+	OPTIONS		Asks for a list of the HTTP methods to which the thing at the request URL can respond
+
+7. Unlike Post request, Get request is idempotent ie second request will be ignored until response of first request is delivered.
+
+8. Web server contains only web or servlet container. It can be used for servlet, jsp, struts, jsf etc. It can't be used for EJB.
+	Eg: Apache Tomcat and Resin.
+
+9. Application server contains Web and EJB containers. It can be used for servlet, jsp, struts, jsf, ejb etc.
+	Eg:
+		JBoss Open-source server from JBoss community.
+		Glassfish provided by Sun Microsystem. Now acquired by Oracle.
+		Weblogic provided by Oracle. It more secured.
+		Websphere provided by IBM.
+10. Content Type is also known as MIME (Multipurpose internet Mail Extension) Type. It is a HTTP header that provides the description about what are you sending to the browser.
+
+11. Using response we:
+	i) set ContentType
+	ii) get writer
+	iii) sendRedirect()
+	iv) add cookie
+
+12. protected long getLastModified(HttpServletRequest req) method returns the time when HttpServletRequest was last modified since midnight January 1, 1970 GMT.
+
+13. The servlet class is loaded by classLoader when the first request for the servlet is received by the web container.
+
+14. The servlet example can be created by three ways:
+	i) By implementing Servlet interface,
+	ii) By inheriting GenericServlet class, (or)
+	iii) By inheriting HttpServlet class
+
+15.	<web-app>  
+		<servlet>  
+			<servlet-name>sonoojaiswal</servlet-name>  
+			<servlet-class>DemoServlet</servlet-class>  
+		</servlet>  
+  
+		<servlet-mapping>  
+			<servlet-name>sonoojaiswal</servlet-name>  
+			<url-pattern>/welcome</url-pattern>  
+		</servlet-mapping>   
+	</web-app>  
+
+	where,
+	<web-app> represents the whole application.
+	<servlet> is sub element of <web-app> and represents the servlet.
+	<servlet-name> is sub element of <servlet> represents the name of the servlet.
+	<servlet-class> is sub element of <servlet> represents the class of the servlet.
+	<servlet-mapping> is sub element of <web-app>. It is used to map the servlet.
+	<url-pattern> is sub element of <servlet-mapping>. This pattern is used at client side to invoke the servlet.
+
+16. To create war file
+	jar -cvf projectname.war *  
+	
+	where,
+	-c is used to create file
+	-v to generate the verbose output
+	-f to specify the arhive file name.
+
+	The * (asterisk) symbol signifies that all the files of this directory (including sub directory).
+
+17. To extract war file
+	jar -xvf projectname.war 
+
+18. load-on-startup element of web-app loads the servlet at the time of deployment or server start if value is positive. It is also known as pre initialization of servlet.
+If you pass the negative value, servlet will be loaded at request time, at first request.
+
+19. public String getContentType() method of ServletRequest interface returns the Internet Media Type of the request entity data, or null if not known.
+
+20. RequestDispatcher interface provides the facility of
+	i) dispatching the request to another resource it may be html, servlet or jsp (
+		public void forward (ServletRequest request,ServletResponse response) 										throws ServletException,java.io.IOException )
+	ii) including the content of another resource also (
+		public void include(ServletRequest request,ServletResponse response)
+						throws ServletException,java.io.IOException )
+
+	It is one of the way of servlet collaboration.
+
+	Eg..
+		RequestDispatcher rd=request.getRequestDispatcher("servlet2");  //servlet2 is the url-pattern of 										the second servlet  
+  
+		rd.forward(request, response); // method may be include or forward  
+
+21. sendRedirect() method of HttpServletResponse interface can be used to redirect response to another resource, it may be servlet, jsp or html file.
+
+22. sendRedirect() accepts relative as well as absolute URL.
+
+23. sendRedirect() works at client side because it uses the url bar of the browser to make another request. So, it can work inside and outside the server.
+
+24. Unlike forward, sendRedirect() always sends a new req.
+
+25. An object of ServletConfig is created by the web container for each servlet.
+
+26. ServletConfig object can be used to get configuration information from web.xml file. If the configuration information is modified from the web.xml file, we don't need to change the servlet. So it is easier to manage the web application if any specific content is modified from time to time.
+
+27. To get ServletConfig object
+	ServletConfig config=getServletConfig();  // Now we can call the methods of ServletConfig interface
+
+28. To set init params 
+	<init-param>  
+      		<param-name>parametername</param-name>  
+      		<param-value>parametervalue</param-value>  
+    	</init-param> 
+
+29.  There is only one ServletContext object per web application.
+
+30. An object of ServletContext is created by the web container at time of deploying the project. This object can be used to get configuration information from web.xml file. If any information is shared to many servlet, it is better to provide it from the web.xml file using the <context-param> element.
+
+31. To get ServletContext object
+	ServletContext application=getServletConfig().getServletContext(); // We can get the ServletContext object from 											ServletConfig object  
+  
+	
+	ServletContext application=getServletContext();  // Another convenient way to get the ServletContext object  
+
+32.  To set context params 
+	<context-param>  
+    		<param-name>parametername</param-name>  
+    		<param-value>parametervalue</param-value>  
+  	</context-param> 
+
+33. Get and set attr
+	context.setAttribute("company","IBM"); // set
+	String n=(String)context.getAttribute("company");  // get
+
+34. Techniques used in Session tracking:
+	i) Cookies
+	ii) Hidden Form Field
+	iii) URL Rewriting
+	iv) HttpSession
+
+35. A cookie is a small piece of information that is persisted between the multiple client requests.
+It has a name, a single value, and optional attributes such as a comment, path and domain qualifiers, a maximum age, and a version number.
+
+36. In cookies technique, we add cookie with response from the servlet. So cookie is stored in the cache of the browser. After that if request is sent by the user, cookie is added with request by default. Thus, we recognize the user as the old user.
+
+37. Types of cookies in servlets.
+	i) Non-persistent cookie
+		 valid for single session only. It is removed each time when user closes the browser.
+	ii) Persistent cookie
+		valid for multiple session. It is removed only if user logout or signout.
+
+38. Real application of cookies
+	Gmail uses cookie technique for login. If you disable the cookie, gmail won't work.
+
+39. public void setMaxAge(int expiry) method of Cookie class sets the maximum age of the cookie in seconds.
+
+40.  Using cookie
+	Cookie ck=new Cookie("user","sonoo jaiswal"); // creating cookie object  
+	response.addCookie(ck); // adding cookie in the response  
+
+41. Deleting cookie
+	Cookie ck=new Cookie("user","");//deleting value of cookie  
+	ck.setMaxAge(0);//changing the maximum age to 0 seconds  
+	response.addCookie(ck);//adding cookie in the response  
+
+42. Getting cookie(s)
+	Cookie ck[]=request.getCookies();  
+	for(int i=0;i<ck.length;i++){  
+		 out.print("<br>"+ck[i].getName()+" "+ck[i].getValue());//printing name and value of cookie  
+	}  
+
+43. Hidden form field is better if we have to submit form in all the pages and we don't want to depend on the browser.
+
+44. Syntax for hidden form field
+	<input type="hidden" name="uname" value="Vimal Jaiswal">  
+
+45. Real application of hidden form field
+	It is widely used in comment form of a website. In such case, we store page id or page name in the hidden field so 		that each page can be uniquely identified.
+
+46. Disadvantage of Hidden Form Field:
+	i) It is maintained at server side.
+	ii) Extra form submission is required on each pages.
+	iii) Only textual information can be used.
+
+47. In URL rewriting, we append a token or identifier to the URL of the next Servlet or the next resource. We can send parameter name/value pairs using the following format:
+	url?name1=value1&name2=value2&??
+
+48. HttpServletRequest interface provides two methods to get the object of HttpSession:
+	i) public HttpSession getSession()
+		Returns the current session associated with this request, or if the request does not have a session, 		creates one.
+	ii) public HttpSession getSession(boolean create)
+		Returns the current HttpSession associated with this request or, if there is no current session and 		create is true, returns a new session.
+
+49. The servlet filter is pluggable, i.e. its entry is defined in the web.xml file, if we remove the entry of filter from the web.xml file, filter will be removed automatically and we don't need to change the servlet.
+
+50. Unlike Servlet, One filter doesn't have dependency on another filter.
+
+51. Defining filter
+	<web-app>  
+		<filter>  
+			<filter-name>...</filter-name>  
+			<filter-class>...</filter-class>  
+		</filter>  
+   
+		<filter-mapping>  
+			<filter-name>...</filter-name>  
+			<url-pattern>...</url-pattern>  
+		</filter-mapping>  
+	</web-app>  
+
+	For mapping filter we can use, either url-pattern or servlet-name. The url-pattern elements has an advantage over 	servlet-name element i.e. it can be applied on servlet, JSP or HTML.
+
+52. @WebServlet("/Simple")  =  to map the servlet with the specified name.
+
+53. Servlet by default is thread un-safe so implement SingleThreadModel interface to ensure that servlet can handle only one request at a time. It is a marker interface.
+
+This interface is currently deprecated since Servlet API 2.4 because it doesn't solves all the thread-safety issues such as static variable and session attributes can be accessed by multiple threads at the same time even if we have implemented the SingleThreadModel interface.
+
+54. Servlets, however, can also be embedded inside HTML pages with something called server-side include (SSI)functionality. It is useful when you want a small part of the page to be dynamically generated rather than loading the whole page again.
+
+55. To parse string obtd from req param to integer	
+	String rollno=request.getParameter("roll");  
+	int roll=Integer.valueOf(rollno);
+
+
+
+NOTE:
+Events and listeners and ServletInputStream and ServletOutputStream to be read.
+See file and img uploading and downloading.

@@ -1,0 +1,5 @@
+package com.trial.dto;
+
+public enum UserProfileType1 {
+
+}

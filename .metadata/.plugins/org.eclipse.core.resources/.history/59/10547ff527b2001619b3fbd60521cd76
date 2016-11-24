@@ -1,0 +1,5 @@
+package com.trial.dao;
+
+public class HibernateTokenRepositoryImpl {
+
+}

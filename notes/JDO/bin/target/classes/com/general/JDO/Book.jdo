@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<jdo>
+  <package name="com.general.JDO">
+   <class name="Book">
+     <extension vendor-name="datanucleus"
+        key="table-name" value="Book_Bk" />
+
+        <field name="bookid" primary-key="true" default-fetch-group="true">
+                <extension vendor-name="datanucleus" key="column-name" value="Book_ID" />
+        </field>
+        <field name="title" default-fetch-group="true">
+            <extension vendor-name="datanucleus" key="column-name" value="BOOK_NAME" />
+        </field>
+        <field name="name" default-fetch-group="true">
+           <extension vendor-name="datanucleus" key="column-name" value="BOOK_TITLE" />
+        </field>
+        <field name="author" default-fetch-group="true">
+            <extension vendor-name="datanucleus" key="column-name" value="BOOK_AUTHOR" />
+        </field>        
+    </class>
+ </package>
+</jdo>

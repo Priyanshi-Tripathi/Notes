@@ -1,0 +1,16 @@
+REST (simple) :
+http://www.vogella.com/tutorials/REST/article.html
+
+REST(maven):
+crunchify.com
+
+JavaScript:
+mozilla.org.com
+w3schools.com
+
+Main project:
+http://websystique.com/springmvc/spring-mvc-4-angularjs-example/
+http://websystique.com/springmvc/spring-4-mvc-and-hibernate4-integration-example-using-annotations/
+
+jdo vs hibernate:
+https://db.apache.org/jdo/jdo_v_jpa.html

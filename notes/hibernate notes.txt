@@ -1,0 +1,41 @@
+1. ORM tool simplifies the data creation, data manipulation and data access. It is a programming technique that maps the object to the data stored in the database.
+
+2. Advantages of Hibernate Framework :
+	i) Opensource and Lightweight
+	ii) Fast performance
+	iii) Database Independent query
+	iv) Automatic table creation
+	v) Simplifies complex join
+	vi) Provides query statistics and database status
+
+3. SessionFactory holds second level cache (optional) of data.
+
+4. Contents of hibernate.cfg.xml
+	<session-factory>  
+        		<property name="hbm2ddl.auto">update</property>  
+        		<property name="dialect">org.hibernate.dialect.Oracle9Dialect</property>  
+        		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>  
+        		<property name="connection.username">system</property>  
+        		<property name="connection.password">oracle</property>  
+        		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>  
+    		<mapping resource="employee.hbm.xml"/>  
+    	</session-factory>  
+
+
+5. assigned is the default generator strategy if there is no <generator> element .
+
+6. The hbm2ddl.auto property is defined for creating automatic table in the database.
+
+7. If you mark a class as mutable="false", class will be treated as an immutable class. By default, it is mutable="true".
+
+8. Second Level Cache implementations are provided by different vendors such as:
+	i) EH (Easy Hibernate) Cache
+	ii) Swarm Cache
+	iii) OS Cache
+	iv) JBoss Cache
+
+9. 
+
+
+NOTE:
+See inheritance mapping

@@ -1,0 +1,5 @@
+package com.trial.service;
+
+public class UserProfileServiceImpl {
+
+}

@@ -1,0 +1,25 @@
+1. Is a Java application program interface (API) for transparent persistence.
+
+2.The JDO object model is determined by a set of Java classes and XML metadata file. The metadata file contains modeling directives that either override the semantics specified in Java or provides semantics that cannot be expressed in Java. An enhancer is provided that enhances the Java classes based on these modeling directives.
+
+3. Primary aspects : 
+	i) Persistence manager
+	ii) Transactions
+	iii) Query
+	iv) Persistence capable classes
+
+4. If J2EE Connector support is not supported by a JDO implementation, then a constructor for the JDO PersistenceManager or PersistenceManagerFactory is required.
+
+5. JDO Query Language interface (JDOQL) has the following goals:
+	i) Query language neutrality
+	ii) Optimization to specific query language
+	iii) Accomodation of multi-tier arch.
+	iv) Large result set support
+	v) Compiled query support
+
+6. JDO identity models are:
+	i) Application (primary key) identity
+	ii) Data store identity
+	iii) Non data store JDO identity
+
+7. 

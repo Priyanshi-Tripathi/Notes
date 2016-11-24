@@ -1,0 +1,72 @@
+1.	Collection	Duplicate value	Insertion order		Sync
+	ArrayList		Yes		Yes			No
+	LinkedList	Yes		Yes			No
+	Vector		Yes		Yes			Yes
+	HashSet		No		Uses hash tbl		-
+	LinkedHashSet	No		Yes			-
+	HashMap		Yes		No			No
+	LinkedHashMap	Yes		Yes			No
+	TreeMap		Yes		No (but asc. order)		No
+	HashTable	Yes		No (but desc. order)		Yes
+
+2.  Since 1.5, collection framework is generic.
+
+3. ArrayList internally uses dynamic array to store the elements thus manipulation ( If any element is removed all the bits are shifted in memory)
+
+4. ArrayList class can act as a list only because it implements List only.
+
+5. ArrayList is better for storing and accessing data.
+
+6. LinkedList internally uses doubly linked list to store the elements.
+
+7. Manipulation with LinkedList is faster than ArrayList because it uses doubly linked list so no bit shifting is required in memory.
+
+8. LinkedList class can act as a list and queue both because it implements List and Deque interfaces.
+
+9. HashSet extends AbstractSet class and implements Set interface.
+
+10. LinkedHashSet extends HashSet class and implements Set interface.
+
+11. TreeSet implements NavigableSet interface that extends the SortedSet interface.
+
+12. HashMap implements the Map interface and extends AbstractMap class.
+
+13. HashMap may have one null key and multiple null values.
+
+14. LinkedHashMap implements the Map interface and extends HashMap class.
+
+15. LinkedHashMap may have one null key and multiple null values.
+
+16. TreeMap implements the NavigableMap interface and extends AbstractMap class.
+
+17. TreeMap cannot have null key but can have multiple null values.
+
+18. HashTable may have not have any null key or value.
+
+19. HashMap is a new class introduced in JDK 1.2 while HashTable is a legacy class.
+
+20. To sync HashMap.. Map m = Collections.synchronizedMap(hashMap);
+
+21. Hashtable is traversed by Enumerator and Iterator while HashMap is traversed by iterator only.
+
+22.  Iterator in HashMap is fail-fast unlike iterator in HashTable.
+
+23. Hashtable inherits Dictionary class.
+
+24. String class and Wrapper classes implements the Comparable interface.So if you store the objects of string or wrapper classes, it will be Comparable.
+
+25. Comparable interface is found in java.lang package and contains only one method named compareTo(Object).It provide only single sorting sequence i.e. you can sort the elements on based on single datamember only.
+
+26. Comparator interface is found in java.util package and contains 2 methods compare(Object obj1,Object obj2) and equals(Object element).
+
+27. The properties object contains key and value pair both as a string. It is the subclass of Hashtable.
+
+28. The properties object can be used to get property value based on the property key. The Properties class provides methods to get data from properties file and store data into properties file. Moreover, it can be used to get properties of system.
+
+29. ArrayList increments 50% of current array size if number of element exceeds from its capacity.
+
+30. Vector increments 100% means doubles the array size if total number of element exceeds than its capacity.
+
+31. Unlike Vector ArrayList is not a legacy class, it is introduced in JDK 1.2.
+
+32. Vector uses Enumeration interface  and iterator to traverse the elements while ArrayList uses Iterator.

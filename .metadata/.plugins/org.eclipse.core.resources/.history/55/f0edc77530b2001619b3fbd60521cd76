@@ -1,0 +1,5 @@
+package com.trial.configuration;
+
+public class AppInitializer {
+
+}
